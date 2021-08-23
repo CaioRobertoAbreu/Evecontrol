@@ -1,4 +1,4 @@
-package br.com.fatec.evento.model;
+package br.com.fatec.evecontrol.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Entity
-public class Convidado {
+public class Funcionario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,8 +25,12 @@ public class Convidado {
 
     private String cpf;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "convidados")
-    private List<Evento> eventos;
-
     private String telefone;
+
+    private String endereco;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(joinColumns = @JoinColumn(name = "FUNCIONARIO_id"),
+            inverseJoinColumns = @JoinColumn(name = "EVENTO_id"))
+    private List<Evento> eventos;
 }

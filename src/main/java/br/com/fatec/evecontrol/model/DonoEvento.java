@@ -1,4 +1,4 @@
-package br.com.fatec.evento.model;
+package br.com.fatec.evecontrol.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

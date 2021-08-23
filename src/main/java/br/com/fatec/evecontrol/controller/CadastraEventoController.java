@@ -1,4 +1,4 @@
-package br.com.fatec.evento.controller;
+package br.com.fatec.evecontrol.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

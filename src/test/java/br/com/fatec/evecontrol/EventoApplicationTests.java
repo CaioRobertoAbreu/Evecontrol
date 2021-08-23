@@ -1,4 +1,4 @@
-package br.com.fatec.evento;
+package br.com.fatec.evecontrol;
 
 import org.springframework.boot.test.context.SpringBootTest;
 

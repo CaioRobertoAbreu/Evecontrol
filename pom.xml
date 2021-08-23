@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.fatec</groupId>
-	<artifactId>evento</artifactId>
+	<artifactId>evecontrol</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>evento</name>
+	<name>evecontrol</name>
 	<description>Event administration project</description>
 	<properties>
 		<java.version>11</java.version>
