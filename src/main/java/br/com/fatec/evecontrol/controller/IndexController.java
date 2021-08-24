@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("evento/v1")
-public class CadastraEventoController {
+@RequestMapping("evento")
+public class IndexController {
 
     @GetMapping
     public String index(){

@@ -28,4 +28,8 @@ public class DonoEvento {
     private String rg;
 
     private String senha;
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 }
