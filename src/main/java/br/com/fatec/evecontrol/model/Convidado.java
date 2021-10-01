@@ -25,8 +25,7 @@ public class Convidado {
 
     private String cpf;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "convidados")
-    private List<Evento> eventos;
-
     private String telefone;
+
+    private boolean confirmacaoPresenca = false;
 }

@@ -1,17 +1,18 @@
 package br.com.fatec.evecontrol.controller;
 
-import br.com.fatec.evecontrol.controller.data.request.CadastraDonoEventoRequest;
-import br.com.fatec.evecontrol.controller.data.request.EditaDonoEventoRequest;
-import br.com.fatec.evecontrol.controller.data.request.EditaSenhaDonoEventoRequest;
-import br.com.fatec.evecontrol.controller.data.response.CadastraDonoEventoResponse;
-import br.com.fatec.evecontrol.model.DonoEvento;
+import br.com.fatec.evecontrol.controller.data.request.donoevento.CadastraDonoEventoRequest;
+import br.com.fatec.evecontrol.controller.data.request.donoevento.EditaDonoEventoRequest;
+import br.com.fatec.evecontrol.controller.data.request.donoevento.EditaSenhaDonoEventoRequest;
+import br.com.fatec.evecontrol.controller.data.response.donoevento.CadastraDonoEventoResponse;
+import br.com.fatec.evecontrol.exception.ExceptionEvecontrolNotFound;
 import br.com.fatec.evecontrol.repository.DonoEventoRepository;
+import br.com.fatec.evecontrol.validations.EventoValidation;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Optional;
 
 @AllArgsConstructor
 @RestController
@@ -19,6 +20,7 @@ import java.util.Optional;
 public class CadastraDonoEventoController {
 
     private final DonoEventoRepository repository;
+    private final EventoValidation validation;
 
     @PostMapping("/cadastra")
     public ResponseEntity<CadastraDonoEventoResponse> cadastraDonoEvento(@Valid @RequestBody CadastraDonoEventoRequest request){
@@ -34,7 +36,7 @@ public class CadastraDonoEventoController {
 
         var entity = repository.findById(idDonoEvento);
 
-        existsDonoEvento(entity);
+        validation.existsDonoEvento(entity);
         repository.save(request.toModel(idDonoEvento, entity.get().getCpf(), entity.get().getSenha()));
 
         return ResponseEntity.noContent().build();
@@ -45,7 +47,12 @@ public class CadastraDonoEventoController {
 
         var entity = repository.findById(idDonoEvento);
 
-        existsDonoEvento(entity);
+        validation.existsDonoEvento(entity);
+
+        if(!entity.get().getSenha().equals(request.getSenhaAntiga())){
+            throw new ExceptionEvecontrolNotFound(HttpStatus.UNPROCESSABLE_ENTITY.value(), HttpStatus.UNPROCESSABLE_ENTITY.toString(),
+                    "Senha antiga inválida");
+        }
 
         entity.get().setSenha(request.getNovaSenha());
 
@@ -54,14 +61,4 @@ public class CadastraDonoEventoController {
         return ResponseEntity.noContent().build();
     }
 
-    private void existsDonoEvento(Optional<DonoEvento> optional){
-
-        if(optional.isEmpty()){
-            throw new RuntimeException();
-            //TODO criar excecao para ser lancada
-        }
-
-    }
-
-    //TODO testar no postman demais endpoints
 }

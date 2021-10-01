@@ -1,9 +1,8 @@
-package br.com.fatec.evecontrol.controller.data.request;
+package br.com.fatec.evecontrol.controller.data.request.donoevento;
 
 import br.com.fatec.evecontrol.model.DonoEvento;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.hibernate.validator.constraints.br.CPF;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -11,7 +10,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
-public class CadastraDonoEventoRequest {
+public class EditaDonoEventoRequest {
 
     @NotBlank(message = "donoevento.nome.notblank")
     @Size(min = 2, message = "donoevento.nome.size")
@@ -23,37 +22,23 @@ public class CadastraDonoEventoRequest {
     @JsonProperty(value = "data_nascimento")
     private LocalDate dataNascimento;
 
-    @NotBlank(message = "donoevento.cpf.notblank")
-    @CPF(message = "donoevento.cpf")
-    @JsonProperty(value = "cpf")
-    private String cpf;
-
     @NotBlank(message = "donoevento.rg.notblank")
     @JsonProperty(value = "rg")
     //TODO criar validacao customizada para RG
     private String rg;
 
-    @NotBlank(message = "donoevento.email.notblank")
-    @Email(message = "donoevento.email")
-    @JsonProperty(value = "email")
-    private String email;
-    //TODO campo unico, nao pode ter dois cadastrados com mesmo email
-
-    @NotBlank(message = "donoevento.senha.notblank")
-    @Size(min = 8, max = 100, message = "donoevento.senha.size")
-    @JsonProperty(value = "senha")
-    private String senha;
-
-    public DonoEvento toModel(){
+    public DonoEvento toModel(Long idDonoEvento, String cpf, String senha) {
 
         return DonoEvento.builder()
+                .id(idDonoEvento)
                 .nome(this.nome)
                 .dataNascimento(this.dataNascimento)
-                .cpf(this.cpf)
+                .cpf(cpf)
                 .rg(this.rg)
-                .senha(this.senha)
+                .senha(senha)
                 .build();
-
-        //TODO encriptar senha
     }
+
+    //TODO criar editor para senha
+    //TODO Não pode haver duas contas com mesmo email e cpf. Validar isso.
 }
