@@ -61,4 +61,16 @@ public class DonoEventoController {
         return ResponseEntity.noContent().build();
     }
 
+    @DeleteMapping("{idDonoEvento}/deletarConta")
+    public ResponseEntity<?> deletarConta(@PathVariable Long idDonoEvento){
+
+        var donoEvento = repository.findById(idDonoEvento);
+        validation.existsDonoEvento(donoEvento);
+
+        repository.deleteById(donoEvento.get().getId());
+
+        return ResponseEntity.noContent().build();
+
+    }
+
 }

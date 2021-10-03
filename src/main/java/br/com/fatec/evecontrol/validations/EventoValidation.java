@@ -30,7 +30,7 @@ public class EventoValidation {
 
     }
 
-    public void existisConvidado(Optional<Convidado> convidado){
+    public void existsConvidado(Optional<Convidado> convidado){
 
         if(convidado.isEmpty()){
             throw new ExceptionEvecontrolNotFound(HttpStatus.NOT_FOUND.value(), HttpStatus.NOT_FOUND.toString(),

@@ -7,10 +7,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.br.CPF;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 
@@ -40,7 +37,7 @@ public class CadastraDonoEventoRequest {
 
     @NotBlank(message = "O campo 'senha' não pode ser vazio")
     @Size(min = 8, max = 100, message = "O campo 'senha' deve ter no mínimo 8 caracteres")
-    //@Pattern(regexp = "", message = "O campo 'nova_senha' precisa corresponder ao padrão") //TODO add regex
+    @Pattern(regexp = "(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$", message = "O campo 'nova_senha' precisa corresponder ao padrão") //TODO add regex
     @JsonProperty(value = "senha")
     private String senha;
 

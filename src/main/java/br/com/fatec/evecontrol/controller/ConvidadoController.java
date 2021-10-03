@@ -7,6 +7,7 @@ import br.com.fatec.evecontrol.repository.EventoRepository;
 import br.com.fatec.evecontrol.validations.EventoValidation;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -42,9 +43,26 @@ public class ConvidadoController {
         var entityConvidado = convidadoRepository.findById(idConvidado);
 
         validation.existsEvento(entityEvento);
-        validation.existisConvidado(entityConvidado);
+        validation.existsConvidado(entityConvidado);
 
         convidadoRepository.save(request.toModel(entityConvidado.get()));
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("evento/{idEvento}/convidado/{idConvidado}/remover")
+    @Transactional
+    public ResponseEntity<?> removeConvidado(@PathVariable Long idEvento, @PathVariable Long idConvidado){
+
+        var entityEvento = eventoRepository.findById(idEvento);
+        var entityConvidado = convidadoRepository.findById(idConvidado);
+
+        validation.existsEvento(entityEvento);
+        validation.existsConvidado(entityConvidado);
+
+        entityEvento.get().getConvidados().remove(entityConvidado.get());
+        eventoRepository.save(entityEvento.get());
+        convidadoRepository.deleteById(entityConvidado.get().getId());
 
         return ResponseEntity.noContent().build();
     }
