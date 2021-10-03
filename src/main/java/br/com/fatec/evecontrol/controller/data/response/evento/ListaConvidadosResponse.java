@@ -8,9 +8,6 @@ public class ListaConvidadosResponse {
     @JsonProperty(value = "nome_convidado")
     private String nome;
 
-    @JsonProperty(value = "rg_convidado")
-    private String rg;
-
     @JsonProperty(value = "cpf_convidado")
     private String cpf;
 
@@ -23,7 +20,6 @@ public class ListaConvidadosResponse {
     public ListaConvidadosResponse(Convidado convidado) {
 
         this.nome = convidado.getNome();
-        this.rg = convidado.getRg();
         this.cpf = convidado.getCpf();
         this.telefone = convidado.getTelefone();
         this.confirmacaoPresenca = convidado.isConfirmacaoPresenca();

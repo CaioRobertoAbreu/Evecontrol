@@ -22,14 +22,10 @@ public class CadastraDonoEventoResponse {
     @JsonProperty(value = "cpf")
     private String cpf;
 
-    @JsonProperty(value = "rg")
-    private String rg;
-
     public CadastraDonoEventoResponse(DonoEvento entity) {
         this.id = entity.getId();
         this.nome = entity.getNome();
         this.dataNascimento = entity.getDataNascimento();
         this.cpf = entity.getCpf();
-        this.rg = entity.getRg();
     }
 }

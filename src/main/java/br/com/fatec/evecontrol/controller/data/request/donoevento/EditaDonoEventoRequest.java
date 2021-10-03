@@ -21,11 +21,6 @@ public class EditaDonoEventoRequest {
     @JsonProperty(value = "data_nascimento")
     private LocalDate dataNascimento;
 
-    @NotBlank(message = "O campo 'rg' não pode ser vazio")
-    @JsonProperty(value = "rg")
-    //TODO criar validacao customizada para RG
-    private String rg;
-
     public DonoEvento toModel(Long idDonoEvento, String cpf, String senha) {
 
         return DonoEvento.builder()
@@ -33,7 +28,6 @@ public class EditaDonoEventoRequest {
                 .nome(this.nome)
                 .dataNascimento(this.dataNascimento)
                 .cpf(cpf)
-                .rg(this.rg)
                 .senha(senha)
                 .build();
     }

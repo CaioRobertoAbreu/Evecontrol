@@ -32,11 +32,6 @@ public class CadastraDonoEventoRequest {
     @CPFUnico
     private String cpf;
 
-    @NotBlank(message = "O campo 'rg' não pode ser vazio")
-    @JsonProperty(value = "rg")
-    //TODO validar RG
-    private String rg;
-
     @NotBlank(message = "O campo 'email' não pode ser vazio")
     @Email(message = "O valor informado para o campo 'email' e invalido")
     @JsonProperty(value = "email")
@@ -55,7 +50,6 @@ public class CadastraDonoEventoRequest {
                 .nome(this.nome)
                 .dataNascimento(this.dataNascimento)
                 .cpf(this.cpf)
-                .rg(this.rg)
                 .email(this.email)
                 .senha(this.senha)
                 .build();

@@ -11,10 +11,6 @@ public class AdicionaConvidadoRequest {
     @NotBlank(message = "O campo 'nome' não pode ser vazio")
     private String nome;
 
-    @JsonProperty(value = "rg")
-    @NotBlank(message = "O campo 'rg' não pode ser vazio")
-    private String rg;
-
     @JsonProperty(value = "cpf")
     @NotBlank(message = "O campo 'cpf' não pode ser vazio")
     private String cpf;
@@ -27,7 +23,6 @@ public class AdicionaConvidadoRequest {
 
         return Convidado.builder()
                 .nome(this.nome)
-                .rg(this.rg)
                 .cpf(this.cpf)
                 .telefone(this.telefone)
                 .build();

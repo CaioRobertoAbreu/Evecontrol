@@ -25,8 +25,6 @@ public class DonoEvento {
 
     private String cpf;
 
-    private String rg;
-
     private String email;
 
     private String senha;
