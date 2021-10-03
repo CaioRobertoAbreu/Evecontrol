@@ -27,6 +27,8 @@ public class DonoEvento {
 
     private String rg;
 
+    private String email;
+
     private String senha;
 
     public void setSenha(String senha) {

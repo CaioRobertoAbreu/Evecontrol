@@ -1,6 +1,8 @@
 package br.com.fatec.evecontrol.controller.data.request.donoevento;
 
 import br.com.fatec.evecontrol.model.DonoEvento;
+import br.com.fatec.evecontrol.validations.CPFUnico;
+import br.com.fatec.evecontrol.validations.EmailUnico;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.br.CPF;
@@ -11,37 +13,39 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
+
 public class CadastraDonoEventoRequest {
 
-    @NotBlank(message = "donoevento.nome.notblank")
-    @Size(min = 2, message = "donoevento.nome.size")
+    @NotBlank(message = "O campo 'nome' não pode ser vazio")
+    @Size(min = 2, message = "O campo 'nome' deve ter no minimo 2 caracteres")
     @JsonProperty(value = "nome")
     private String nome;
 
-    @NotNull(message = "donoevento.datanascimento.notnull")
+    @NotNull(message = "O campo 'data_nascimento' não pode ser nulo")
     @JsonFormat(pattern = "dd/MM/yyyy")
     @JsonProperty(value = "data_nascimento")
     private LocalDate dataNascimento;
 
-    @NotBlank(message = "donoevento.cpf.notblank")
-    @CPF(message = "donoevento.cpf")
+    @NotBlank(message = "O campo 'cpf' não pode ser vazio")
+    @CPF(message = "O valor informado para o campo 'CPF' e invalido")
     @JsonProperty(value = "cpf")
+    @CPFUnico
     private String cpf;
-    //TODO campo unico, nao pode ter dois cadastrados com mesmo cpf
 
-    @NotBlank(message = "donoevento.rg.notblank")
+    @NotBlank(message = "O campo 'rg' não pode ser vazio")
     @JsonProperty(value = "rg")
-    //TODO criar validacao customizada para RG
+    //TODO validar RG
     private String rg;
 
-    @NotBlank(message = "donoevento.email.notblank")
-    @Email(message = "donoevento.email")
+    @NotBlank(message = "O campo 'email' não pode ser vazio")
+    @Email(message = "O valor informado para o campo 'email' e invalido")
     @JsonProperty(value = "email")
+    @EmailUnico
     private String email;
-    //TODO campo unico, nao pode ter dois cadastrados com mesmo email
 
-    @NotBlank(message = "donoevento.senha.notblank")
-    @Size(min = 8, max = 100, message = "donoevento.senha.size")
+    @NotBlank(message = "O campo 'senha' não pode ser vazio")
+    @Size(min = 8, max = 100, message = "O campo 'senha' deve ter no mínimo 8 caracteres")
+    //@Pattern(regexp = "", message = "O campo 'nova_senha' precisa corresponder ao padrão") //TODO add regex
     @JsonProperty(value = "senha")
     private String senha;
 
@@ -52,6 +56,7 @@ public class CadastraDonoEventoRequest {
                 .dataNascimento(this.dataNascimento)
                 .cpf(this.cpf)
                 .rg(this.rg)
+                .email(this.email)
                 .senha(this.senha)
                 .build();
 

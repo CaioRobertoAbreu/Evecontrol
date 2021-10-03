@@ -4,7 +4,6 @@ import br.com.fatec.evecontrol.model.DonoEvento;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -12,17 +11,17 @@ import java.time.LocalDate;
 
 public class EditaDonoEventoRequest {
 
-    @NotBlank(message = "donoevento.nome.notblank")
-    @Size(min = 2, message = "donoevento.nome.size")
+    @NotBlank(message = "O campo 'nome' não pode ser vazio")
+    @Size(min = 2, message = "O campo 'nome' deve ter no minimo 2 caracteres")
     @JsonProperty(value = "nome")
     private String nome;
 
-    @NotNull(message = "donoevento.datanascimento.notnull")
+    @NotNull(message = "O campo 'data_nascimento' não pode ser nulo")
     @JsonFormat(pattern = "dd/MM/yyyy")
     @JsonProperty(value = "data_nascimento")
     private LocalDate dataNascimento;
 
-    @NotBlank(message = "donoevento.rg.notblank")
+    @NotBlank(message = "O campo 'rg' não pode ser vazio")
     @JsonProperty(value = "rg")
     //TODO criar validacao customizada para RG
     private String rg;
@@ -40,5 +39,4 @@ public class EditaDonoEventoRequest {
     }
 
     //TODO criar editor para senha
-    //TODO Não pode haver duas contas com mesmo email e cpf. Validar isso.
 }

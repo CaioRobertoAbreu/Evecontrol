@@ -3,10 +3,10 @@ package br.com.fatec.evecontrol.exception;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @AllArgsConstructor
 @Getter
@@ -18,6 +18,7 @@ public class ExceptionEvecontrol {
     @JsonProperty(value = "message_status")
     private String messageStatus;
     private String message;
+    private List<ErrorValidation> erros;
 
 
 

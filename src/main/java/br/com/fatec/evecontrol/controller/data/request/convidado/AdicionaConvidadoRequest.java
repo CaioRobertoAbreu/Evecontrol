@@ -8,19 +8,19 @@ import javax.validation.constraints.NotBlank;
 public class AdicionaConvidadoRequest {
 
     @JsonProperty(value = "nome_convidado")
-    @NotBlank(message = "convidado.nome.notblank")
+    @NotBlank(message = "O campo 'nome' não pode ser vazio")
     private String nome;
 
     @JsonProperty(value = "rg")
-    @NotBlank(message = "convidado.rg.notblank")
+    @NotBlank(message = "O campo 'rg' não pode ser vazio")
     private String rg;
 
     @JsonProperty(value = "cpf")
-    @NotBlank(message = "convidado.cpf.notblank")
+    @NotBlank(message = "O campo 'cpf' não pode ser vazio")
     private String cpf;
 
     @JsonProperty(value = "telefone")
-    @NotBlank(message = "convidade.telefone.notblank")
+    @NotBlank(message = "O campo 'telefone' não pode ser vazio")
     private String telefone;
 
     public Convidado toModel(){
