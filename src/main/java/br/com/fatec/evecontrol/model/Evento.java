@@ -4,12 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Builder
@@ -39,8 +36,5 @@ public class Evento {
     @JoinTable(joinColumns = @JoinColumn(name = "EVENTO_id"),
             inverseJoinColumns = @JoinColumn(name = "CONVIDADO_id"))
     private List<Convidado> convidados;
-
-    @ManyToMany(mappedBy = "eventos", cascade = CascadeType.ALL) //TODO testar persist
-    private List<Funcionario> funcionarios;
 
 }

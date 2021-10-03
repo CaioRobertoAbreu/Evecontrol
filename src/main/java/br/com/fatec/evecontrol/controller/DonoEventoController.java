@@ -17,7 +17,7 @@ import javax.validation.Valid;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/evecontrol/v1/donoevento")
-public class CadastraDonoEventoController {
+public class DonoEventoController {
 
     private final DonoEventoRepository repository;
     private final EventoValidation validation;

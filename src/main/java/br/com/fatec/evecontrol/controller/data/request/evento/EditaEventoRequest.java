@@ -40,7 +40,6 @@ public class EditaEventoRequest {
                 .endereco(this.endereco)
                 .cep(this.cep)
                 .donoEvento(dono)
-                .funcionarios(evento.getFuncionarios())
                 .convidados(evento.getConvidados())
                 .build();
     }
