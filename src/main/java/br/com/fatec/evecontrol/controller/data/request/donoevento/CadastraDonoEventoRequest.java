@@ -36,8 +36,13 @@ public class CadastraDonoEventoRequest {
     private String email;
 
     @NotBlank(message = "O campo 'senha' não pode ser vazio")
-    @Size(min = 8, max = 100, message = "O campo 'senha' deve ter no mínimo 8 caracteres")
-    @Pattern(regexp = "(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$", message = "O campo 'nova_senha' precisa corresponder ao padrão") //TODO add regex
+    @Pattern(regexp = "(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$",
+            message = "O campo 'nova_senha' precisa corresponder ao padrão" +
+                    "\n\rDeve conter 1 letra maiúscula" +
+                    "\n\rDeve conter 1 letra minúscula" +
+                    "\n\rDeve conter 1 número" +
+                    "\n\rDeve conter 1 caractere especial" +
+                    "\n\rTer pelo menos 8 caracteres")
     @JsonProperty(value = "senha")
     private String senha;
 

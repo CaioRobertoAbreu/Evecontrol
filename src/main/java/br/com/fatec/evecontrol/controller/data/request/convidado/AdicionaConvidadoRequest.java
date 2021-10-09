@@ -30,6 +30,4 @@ public class AdicionaConvidadoRequest {
                 .build();
     }
 
-    //TODO add pattern (ou validacao) para telefone
-
 }
