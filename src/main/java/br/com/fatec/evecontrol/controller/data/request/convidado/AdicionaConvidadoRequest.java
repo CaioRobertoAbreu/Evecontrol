@@ -1,6 +1,7 @@
 package br.com.fatec.evecontrol.controller.data.request.convidado;
 
 import br.com.fatec.evecontrol.model.Convidado;
+import br.com.fatec.evecontrol.validations.Telefone;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.validation.constraints.NotBlank;
@@ -17,6 +18,7 @@ public class AdicionaConvidadoRequest {
 
     @JsonProperty(value = "telefone")
     @NotBlank(message = "O campo 'telefone' não pode ser vazio")
+    @Telefone
     private String telefone;
 
     public Convidado toModel(){

@@ -28,4 +28,9 @@ public class Convidado {
     private String telefone;
 
     private boolean confirmacaoPresenca = false;
+
+    public void confirmarPresenca(){
+
+        confirmacaoPresenca = true;
+    }
 }

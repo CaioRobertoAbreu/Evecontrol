@@ -38,4 +38,13 @@ public class EventoValidation {
         }
 
     }
+
+    public void verificaConvidadoConfirmado(Optional<Convidado> convidado){
+
+        if(convidado.get().isConfirmacaoPresenca()){
+            throw new ExceptionEvecontrolNotFound(HttpStatus.UNPROCESSABLE_ENTITY.value(), HttpStatus.UNPROCESSABLE_ENTITY.toString(),
+                    "Convidado já confirmado");
+        }
+
+    }
 }
