@@ -15,6 +15,7 @@
 	<description>Event administration project</description>
 	<properties>
 		<java.version>11</java.version>
+		<java.target>11</java.target>
 	</properties>
 	<dependencies>
 		<dependency>
