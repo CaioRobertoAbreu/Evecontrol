@@ -10,6 +10,7 @@ import br.com.fatec.evecontrol.validations.EventoValidation;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -25,7 +26,7 @@ public class DonoEventoController {
     @PostMapping("/cadastra")
     public ResponseEntity<CadastraDonoEventoResponse> cadastraDonoEvento(@Valid @RequestBody CadastraDonoEventoRequest request){
 
-        var response = new CadastraDonoEventoResponse(repository.save(request.toModel()));
+        var response = new CadastraDonoEventoResponse(repository.save(request.toModel(new BCryptPasswordEncoder())));
 
         return ResponseEntity.ok(response);
 

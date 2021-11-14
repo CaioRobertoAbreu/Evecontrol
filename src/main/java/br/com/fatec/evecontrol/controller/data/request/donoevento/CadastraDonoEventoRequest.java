@@ -1,14 +1,17 @@
 package br.com.fatec.evecontrol.controller.data.request.donoevento;
 
 import br.com.fatec.evecontrol.model.DonoEvento;
+import br.com.fatec.evecontrol.model.PerfilUsuario;
 import br.com.fatec.evecontrol.validations.CPFUnico;
 import br.com.fatec.evecontrol.validations.EmailUnico;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.validation.constraints.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 
 public class CadastraDonoEventoRequest {
@@ -46,16 +49,22 @@ public class CadastraDonoEventoRequest {
     @JsonProperty(value = "senha")
     private String senha;
 
-    public DonoEvento toModel(){
+    public DonoEvento toModel(BCryptPasswordEncoder enconder){
 
         return DonoEvento.builder()
                 .nome(this.nome)
                 .dataNascimento(this.dataNascimento)
                 .cpf(this.cpf)
                 .email(this.email)
-                .senha(this.senha)
+                .senha(enconder.encode(this.senha))
+                .perfis(Set.of(PerfilUsuario.USUARIO.getCodigo()))
                 .build();
 
-        //TODO encriptar senha
+    }
+}
+
+class TesteImplementacao{
+    public static void main(String[] args) {
+
     }
 }

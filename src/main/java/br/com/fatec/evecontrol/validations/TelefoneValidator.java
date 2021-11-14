@@ -1,5 +1,7 @@
 package br.com.fatec.evecontrol.validations;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
@@ -45,6 +47,17 @@ class TesteTelefoneValidator{
 
     public static void main(String[] args) {
 
+        var enconder = new BCryptPasswordEncoder();
+        var senhaEncodada = enconder.encode("Varinhas123%");
+        var novaSenhaEncodada = enconder.encode("Varinhas123%");
+
+        System.out.println(senhaEncodada);
+        System.out.println(novaSenhaEncodada);
+        System.out.println(senhaEncodada.equals(novaSenhaEncodada));
+
+
+
+        /*
         var validator = new TelefoneValidator();
 
         var regexDDDValido = "[1-9]{2}";
@@ -57,8 +70,8 @@ class TesteTelefoneValidator{
 
 
 
-       // System.out.println("TELEFONES COM 9 DIG");
-        /*validator.testaTelefone("13997547475");
+        System.out.println("TELEFONES COM 9 DIG");
+        validator.testaTelefone("13997547475");
         validator.testaTelefone("(13)997547475");
         validator.testaTelefone("13111111111");
         validator.testaTelefone("(13)111111111");

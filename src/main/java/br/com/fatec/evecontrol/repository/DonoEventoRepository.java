@@ -11,4 +11,6 @@ public interface DonoEventoRepository extends JpaRepository<DonoEvento, Long> {
 
     boolean existsByEmail(String email);
 
+    DonoEvento findByEmail(String email);
+
 }
