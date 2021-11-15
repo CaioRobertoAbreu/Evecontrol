@@ -1,9 +1,11 @@
 package br.com.fatec.evecontrol.controller.data.response.evento;
 
 import br.com.fatec.evecontrol.model.Evento;
+import br.com.fatec.evecontrol.model.PerfilUsuario;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class InfoEvento {
@@ -26,6 +28,9 @@ public class InfoEvento {
     @JsonProperty(value = "lista_convidados")
     private List<ListaConvidadosResponse> convidados;
 
+    @JsonProperty(value = "perfis")
+    private Set<PerfilUsuario> perfis;
+
     public InfoEvento(Evento evento) {
 
         this.idEvento = evento.getId();
@@ -37,5 +42,6 @@ public class InfoEvento {
                                 .stream()
                                 .map(ListaConvidadosResponse::new)
                                 .collect(Collectors.toList());
+        this.perfis = evento.getDonoEvento().getPerfisEnum();
     }
 }

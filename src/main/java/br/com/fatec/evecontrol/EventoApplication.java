@@ -82,8 +82,15 @@ public class EventoApplication implements CommandLineRunner {
                 "Rua dos Alfeneiros, nº4, Whitehall, Inglaterra",
                 "78190970", listaConvidados);
 
+        var eventoTeste = new Evento(null,
+                "Evento de teste",
+                admin,
+                LocalDateTime.of(2015, Month.APRIL, 19, 15, 30),
+                "Rua dos Alfeneiros, nº4, Whitehall, Inglaterra",
+                "78190970", null);
+
 
         donoEventoRepository.saveAll(Arrays.asList(admin, donoEvento));
-        eventoRepository.save(evento);
+        eventoRepository.saveAll(Arrays.asList(evento, eventoTeste));
     }
 }

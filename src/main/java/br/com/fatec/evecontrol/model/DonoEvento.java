@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -36,7 +35,7 @@ public class DonoEvento {
     private String senha;
 
     @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "Perfis")
+    @CollectionTable(name = "perfis")
     private Set<Integer> perfis = new HashSet<>();
 
     public void setSenha(String senha) {

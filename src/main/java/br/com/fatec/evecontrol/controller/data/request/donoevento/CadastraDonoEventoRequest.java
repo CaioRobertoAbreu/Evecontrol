@@ -62,9 +62,3 @@ public class CadastraDonoEventoRequest {
 
     }
 }
-
-class TesteImplementacao{
-    public static void main(String[] args) {
-
-    }
-}

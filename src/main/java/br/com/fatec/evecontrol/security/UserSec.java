@@ -1,7 +1,6 @@
 package br.com.fatec.evecontrol.security;
 
 import br.com.fatec.evecontrol.model.PerfilUsuario;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

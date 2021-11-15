@@ -24,6 +24,7 @@ public class secconfig extends WebSecurityConfigurerAdapter {
     private final String url =  "/evecontrol/v1/donoevento/cadastra";
     private final String index =  "/evecontrol";
     private final String h2 =  "/h2-console/**";
+    private final String apagar =  "/evecontrol/v1/evento/**/info";
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -42,6 +43,7 @@ public class secconfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(index).permitAll()
                 .antMatchers(h2).permitAll()
                 .antMatchers(url).permitAll()
+                .antMatchers(apagar).permitAll()
                 .anyRequest().authenticated()
             .and()
                 .csrf().disable()
