@@ -22,6 +22,7 @@ public class secconfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
     private final String url =  "/evecontrol/v1/donoevento/cadastra";
+    private final String index =  "/evecontrol";
     private final String h2 =  "/h2-console/**";
 
     @Override
@@ -38,6 +39,7 @@ public class secconfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers(index).permitAll()
                 .antMatchers(h2).permitAll()
                 .antMatchers(url).permitAll()
                 .anyRequest().authenticated()
