@@ -10,7 +10,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -61,7 +60,7 @@ public class EventoApplication implements CommandLineRunner {
                 .dataNascimento(LocalDate.of(1881, Month.AUGUST, 21))
                 .cpf("05448213006")
                 .email("albus.dumbledore@gmail.com")
-                .senha(new BCryptPasswordEncoder().encode("VarinhaDasVarinhas123*"))
+                .senha("VarinhaDasVarinhas123*")
                 .perfis(Set.of(PerfilUsuario.USUARIO.getCodigo()))
                 .build();
 
@@ -71,7 +70,7 @@ public class EventoApplication implements CommandLineRunner {
                 .dataNascimento(LocalDate.of(1997, Month.APRIL, 13))
                 .cpf("46898769081")
                 .email("caio3015@hotmail.com")
-                .senha(new BCryptPasswordEncoder().encode("Fatec123*"))
+                .senha("Fatec123*")
                 .perfis(Set.of(PerfilUsuario.ADMIN.getCodigo()))
                 .build();
 

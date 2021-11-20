@@ -1,8 +1,6 @@
 package br.com.fatec.evecontrol.model;
 
-import org.springframework.security.core.GrantedAuthority;
-
-public enum PerfilUsuario implements GrantedAuthority {
+public enum PerfilUsuario {
 
     ADMIN(100, "ROLE_ADMIN", "Administrador"),
     USUARIO(200, "ROLE_USUARIO", "Usuario");
@@ -25,7 +23,6 @@ public enum PerfilUsuario implements GrantedAuthority {
         return descricao;
     }
 
-    @Override
     public String getAuthority() {
         return authority;
     }
